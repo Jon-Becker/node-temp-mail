@@ -48,8 +48,12 @@ class TempMail {
         response.address = mailingAddressLabel + "@1secmail.com";
         response.messageCount = body.length;
         response.messages = [];
-
-        buildJson(callback, mailingAddressLabel, response, body, 0, body.length);
+        if(body.length > 0){
+          buildJson(callback, mailingAddressLabel, response, body, 0, body.length);
+        }
+        else {
+          callback(null, response);
+        }
       }
     });
 
