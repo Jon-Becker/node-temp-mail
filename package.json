@@ -1,0 +1,26 @@
+{
+  "name": "node-temp-mail",
+  "version": "1.0.1",
+  "description": "Node wrapper for temporary email addresses.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tempmail",
+    "temporary",
+    "mail",
+    "email",
+    "temp",
+    "email",
+    "temporary",
+    "email",
+    "node",
+    "tempemail"
+  ],
+  "author": "Jonathan Becker",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
