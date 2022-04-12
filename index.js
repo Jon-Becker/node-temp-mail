@@ -17,7 +17,7 @@ function buildJson(callback, label, currentJson, addressJson, currentIndex, fina
       messageBody.message = body.textBody;
       currentJson.messages.push(messageBody);
       if((currentIndex+1) < finalIndex){
-        buildJson(label, currentJson, addressJson, (currentIndex+1), finalIndex);
+        buildJson(callback, label, currentJson, addressJson, (currentIndex+1), finalIndex);
       }
       else {
         callback(null, currentJson);
