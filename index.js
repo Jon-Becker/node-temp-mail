@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 const nodify = require("./nodify");
 
-/** @typedef {{ from: string, timestaml: string, subject: string, message: string }} */
+/** @typedef {{ from: string, timestamp: string, subject: string, message: string }} Message */
 /** @typedef {{ address: string, messageCount: number, messages: Message[] }} EmailFetchResult */
 
 class TempMail {
