@@ -3,7 +3,7 @@ var request = require('request');
 function buildJson(callback, label, currentJson, addressJson, currentIndex, finalIndex) {
 
   request({
-    url: "https://www.1secmail.com/api/v1/?action=readMessage&login="+label+"&domain=1secmail.com&id="+addressJson[currentIndex].id,
+    url: "https://www.1secmail.com/api/v1/?action=readMessage&login="+label+"&domain=wwjmp.com&id="+addressJson[currentIndex].id,
     json: true
   }, function (error, response, body) {
     if (error || response.statusCode !== 200) {
@@ -37,7 +37,7 @@ class TempMail {
 
 
     request({
-      url: "https://www.1secmail.com/api/v1/?action=getMessages&login="+mailingAddressLabel+"&domain=1secmail.com",
+      url: "https://www.1secmail.com/api/v1/?action=getMessages&login="+mailingAddressLabel+"&domain=wwjmp.com",
       json: true
     }, function (error, response, body) {
       if (error || response.statusCode !== 200) {
@@ -45,7 +45,7 @@ class TempMail {
       }
       else {
         response = {};
-        response.address = mailingAddressLabel + "@1secmail.com";
+        response.address = mailingAddressLabel + "@wwjmp.com";
         response.messageCount = body.length;
         response.messages = [];
         if(body.length > 0){
@@ -62,7 +62,7 @@ class TempMail {
 
   getAddress(){
     var response = {};
-    response.address = this.mailingAddressLabel + "@1secmail.com";
+    response.address = this.mailingAddressLabel + "@wwjmp.com";
     return response;
   }
 }
