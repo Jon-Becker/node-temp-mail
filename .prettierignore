@@ -6,4 +6,4 @@ node_modules
 .prettierignore
 .gitignore
 *.txt
-*.webp
+*.png
