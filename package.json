@@ -4,7 +4,8 @@
   "description": "Node wrapper for temporary email addresses.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write . && eslint --fix .",
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
   },
   "keywords": [
     "tempmail",
@@ -21,6 +22,26 @@
   "author": "Jonathan Becker",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.88.2"
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.49.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "eslint . --fix --ignore-pattern \"*.json\"",
+      "prettier --write ."
+    ],
+    "**/*": [
+      "prettier --write ."
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
