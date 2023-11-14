@@ -33,7 +33,7 @@ class TempMail {
     const messages = await Promise.all(
       data.map(async (email) => {
         const mailHttpResponse = await axios.get(
-          `https://www.1secmail.com/api/v1/?action=readMessage&login=${this.mailingAddressLabel}&domain=${this.domain}&id${email.id}`,
+          `https://www.1secmail.com/api/v1/?action=readMessage&login=${this.mailingAddressLabel}&domain=${this.domain}&id=${email.id}`,
         );
         const mailData = mailHttpResponse.data;
         return {
