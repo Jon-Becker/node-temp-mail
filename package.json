@@ -1,6 +1,6 @@
 {
   "name": "node-temp-mail",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Node wrapper for temporary email addresses.",
   "main": "index.js",
   "scripts": {
