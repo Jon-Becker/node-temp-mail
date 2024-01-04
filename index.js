@@ -40,7 +40,7 @@ class TempMail {
           from: mailData.from,
           timestamp: mailData.date,
           subject: mailData.subject,
-          message: mailData.textBody,
+          message: mailData.body,
         };
       }),
     );
