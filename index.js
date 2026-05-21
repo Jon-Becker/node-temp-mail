@@ -2,7 +2,8 @@ const { default: axios } = require("axios");
 const nodify = require("./nodify");
 
 /** @typedef {"1secmail.com" | "1secmail.net" | "1secmail.org" | "wwjmp.com" | "esiix.com" | "xojxe.com" | "yoggm.com"} Domain */
-/** @typedef {{ from: string, timestamp: string, subject: string, message: string }} Message */
+/** @typedef {{ filename: string, contentType: string, size: number, url: string }} Attachment */
+/** @typedef {{ from: string, timestamp: string, subject: string, message: string, attachments: Attachment[] }} Message */
 /** @typedef {{ address: string, messageCount: number, messages: Message[] }} EmailFetchResult */
 
 class TempMail {
@@ -36,11 +37,21 @@ class TempMail {
           `https://www.1secmail.com/api/v1/?action=readMessage&login=${this.mailingAddressLabel}&domain=${this.domain}&id=${email.id}`,
         );
         const mailData = mailHttpResponse.data;
+
+        const attachments = mailData.attachments.map(attachment => {
+          const url = `https://www.1secmail.com/api/v1/?action=download&login=${this.mailingAddressLabel}&domain=${this.domain}&id=${email.id}&file=${encodeURIComponent(attachment.filename)}`
+          return {
+            ...attachment,
+            url,
+          }
+        })
+
         return {
           from: mailData.from,
           timestamp: mailData.date,
           subject: mailData.subject,
           message: mailData.body,
+          attachments,
         };
       }),
     );
